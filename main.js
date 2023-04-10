@@ -4,7 +4,31 @@ const notes = [];
 keys.forEach(function(key){
   notes.push(document.getElementById(key));
 })
+// Sounds to all buttons
+const notesSound = {
+  "high-c-key": new Audio("MP3 samples/piano-mp3_C3.mp3"),
+	"c-key": new Audio("MP3 samples/piano-mp3_C4.mp3"),
+	"c-sharp-key": new Audio("MP3 samples/piano-mp3_C3.mp3"),
+	"d-key": new Audio("MP3 samples/piano-mp3_D3.mp3"),
+	"d-sharp-key": new Audio("MP3 samples/piano-mp3_E4.mp3"),
+	"e-key": new Audio("MP3 samples/piano-mp3_E4.mp3"),
+	"f-key": new Audio("MP3 samples/piano-mp3_F3.mp3"),
+	"f-sharp-key": new Audio("MP3 samples/piano-mp3_F3.mp3"),
+	"g-key": new Audio("MP3 samples/piano-mp3_G4.mp3"),
+	"g-sharp-key": new Audio("MP3 samples/piano-mp3_Gb3.mp3"),
+	"a-key": new Audio("MP3 samples/piano-mp3_A4.mp3"),
+	"a-sharp-key": new Audio("MP3 samples/piano-mp3_A4sharp.mp3"),
+	"b-key": new Audio("MP3 samples/piano-mp3_B4.mp3")
+};
 
+const keysSound = document.querySelectorAll(".key, .black-key");
+keysSound.forEach(function(key) {
+	key.addEventListener("click", function() {
+		const element = notesSound[key.id];
+		element.currentTime = 0; // start playing from the beginning of the audio file
+		element.play();
+	});
+});
 // Write named functions that change the color of the keys below
 const keyPlay = function(event) {
   event.target.style.backgroundColor = 'grey'
